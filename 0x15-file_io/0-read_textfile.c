@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 /**
  * read_textfile - read file count of letters
