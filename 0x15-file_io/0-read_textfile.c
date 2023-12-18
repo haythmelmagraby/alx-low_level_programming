@@ -21,18 +21,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (fptr == -1)
 	{
-		exit(0);
-	} else
-	{
-		size = read(fptr, buff, letters);
-		if (size == -1)
-		{
-			exit(0);
-		} else
-		{
-			size = write(STDOUT_FILENO, &buff[0], size);
-			close(fptr);
-			return (size);
-		}
+		return (0);
 	}
+	size = read(fptr, buff, letters);
+	if (size == -1)
+	{
+	return (0);
+	}
+
+	size = write(STDOUT_FILENO, &buff[0], size);
+	close(fptr);
+	return (size);
 }
