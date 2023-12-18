@@ -22,17 +22,24 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (fptr == -1)
 	{
-		close(fptr);
 		return (0);
 	}
 	buff = malloc(sizeof(char) * letters);
+	if (!buff)
+	{
+		return (0);
+	}
 	size = read(fptr, buff, letters);
+	if(size == -1)
+	{
+		return (0);
+	}
 	sizet = write(STDOUT_FILENO, buff, size);
 	free(buff);
 	close(fptr);
-	if (sizet == -1)
+	if(sizet != size || sizet == -1)
 	{
-		return (0);
+	return (0);
 	}
 	return (sizet);
 }
