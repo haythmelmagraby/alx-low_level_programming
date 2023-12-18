@@ -22,14 +22,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (fptr == -1)
 	{
+		close(fptr);
 		return (0);
 	}
 	size = read(fptr, &buff[0], letters);
 	size = write(STDOUT_FILENO, &buff[0], size);
+	close(fptr);
 	if (size == -1)
 	{
 		return (0);
 	}
-	close(fptr);
 	return (size);
 }
